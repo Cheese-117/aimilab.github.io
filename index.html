@@ -1,125 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aimilab Games</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aimilab Games</title>
+  <style>
+    /* Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-        body {
-            background: linear-gradient(135deg, #000 60%, #1a3a1a);
-            min-height: 100vh;
-            color: #fff;
-        }
+    :root {
+      --green: #00c853;
+      --dark-green: #004d00;
+      --black: #000000;
+      --white: #ffffff;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        .left-column {
-            flex: 1;
-        }
+    body {
+      background: linear-gradient(135deg, var(--black) 0%, var(--black) 50%, var(--dark-green) 50%, var(--dark-green) 100%);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        .game-title {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+    header {
+      padding: 40px 60px 20px;
+    }
 
-        .description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            max-width: 500px;
-            opacity: 0.9;
-        }
+    .logo {
+      font-size: 2.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .download-links {
-            display: flex;
-            gap: 20px;
-        }
+    .logo span.heart {
+      font-size: 2rem;
+      color: var(--green);
+    }
 
-        .store-btn {
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-            background: #fff;
-            color: #000;
-        }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      gap: 40px;
+    }
 
-        .store-btn:hover {
-            transform: translateY(-3px);
-        }
+    .left {
+      max-width: 480px;
+    }
 
-        .game-image {
-            flex: 1;
-            background: #1a3a1a;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
+    h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
 
-        .game-image img {
-            width: 100%;
-            border-radius: 15px;
-            /* 此处可替换为实际游戏截图 */
-        }
+    p.description {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 35px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            opacity: 0.7;
-        }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .download-links {
-                justify-content: center;
-            }
-        }
-    </style>
+    .btn {
+      background: var(--green);
+      border: none;
+      color: var(--white);
+      padding: 14px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .right img {
+      max-width: 560px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    footer {
+      padding: 25px 60px;
+      font-size: 0.85rem;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <h1 class="game-title">Solitaire Classic</h1>
-            <p class="description">
-                Classic Solitaire is a puzzle game that will exercise your brain. 
-                And it is an offline game, you can play it anytime and anywhere. 
-                Download it now and play the best classic solitaire game for free!
-            </p>
-            <div class="download-links">
-                <a href="#" class="store-btn">Google Play</a>
-                <a href="#" class="store-btn">App Store</a>
-            </div>
-        </div>
-        
-        <div class="game-image">
-            <!-- 右侧游戏图片区域 -->
-            <img src="https://via.placeholder.com/600x400/2d5a2d/fff?text=Solitaire+Game+Preview" alt="Solitaire Game">
-        </div>
+  <header>
+    <div class="logo">
+      Aimilab <span class="heart">♥</span> Games
     </div>
+  </header>
 
-    <footer>
-        <p>2023 © xxxx. Contact: xxxx</p>
-    </footer>
+  <main>
+    <section class="left">
+      <h1>Solitaire Classic</h1>
+      <p class="description">
+        Classic Solitaire is a puzzle game that will exercise your brain. And it is an offline game, you can play it anytime and anywhere. Download it now and play the best classic solitaire game for free!
+      </p >
+      <div class="buttons">
+        Google Play
+        App Store
+      </div>
+    </section>
+
+    <section class="right">
+      <!-- Replace src with the generated image file name if different -->
+      < img src="aimilab_solitaire.png" alt="Solitaire Classic game screenshot" />
+    </section>
+  </main>
+
+  <footer>
+    ©2025 xxxx. Contact: support@xxxx.com
+  </footer>
 </body>
 </html>
