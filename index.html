@@ -22,28 +22,38 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    html, body {
+      height: 100%;
+      overflow: hidden; /* 禁止滚动 */
+    }
+
     body {
       background: linear-gradient(135deg, var(--black) 0%, var(--black) 50%, var(--dark-green) 50%, var(--dark-green) 100%);
       color: var(--white);
-      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      height: 90vh;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 40px 20px;
+      justify-content: space-between;
+      padding: 30px;
     }
 
     header {
-      width: 100%;
-      max-width: 1200px;
-      padding-bottom: 20px;
-    }
-
-    .logo {
-      font-size: 2.4rem;
-      font-weight: 700;
       display: flex;
       align-items: center;
+      font-size: 2.4rem;
+      font-weight: 700;
       gap: 10px;
     }
 
@@ -53,16 +63,11 @@
     }
 
     main {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(6px);
-      border-radius: 20px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-      padding: 40px 30px;
-      width: 100%;
-      max-width: 1200px;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 30px;
+      flex: 1;
+      overflow: hidden;
     }
 
     @media (min-width: 768px) {
@@ -78,29 +83,28 @@
     }
 
     h1 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin-bottom: 20px;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
     }
 
     p.description {
       font-size: 1rem;
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       color: #e0e0e0;
     }
 
     .buttons {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
     }
 
     .btn {
       background: var(--green);
       border: none;
       color: var(--white);
-      padding: 14px 30px;
+      padding: 12px 24px;
       font-size: 1rem;
       font-weight: 600;
       border-radius: 8px;
@@ -117,9 +121,9 @@
 
     .carousel {
       display: flex;
-      overflow-x: auto;
-      gap: 20px;
+      gap: 15px;
       scroll-snap-type: x mandatory;
+      overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       padding: 10px 0;
     }
@@ -127,54 +131,50 @@
     .carousel img {
       flex-shrink: 0;
       width: 100%;
-      max-width: 300px;
+      max-width: 260px;
       border-radius: 12px;
       scroll-snap-align: start;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
     }
 
     footer {
-      margin-top: 40px;
       font-size: 0.85rem;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px;
       text-align: center;
-      width: 100%;
-      max-width: 1200px;
-      border-radius: 12px;
+      padding-top: 10px;
+      opacity: 0.85;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
+  <div class="container">
+    <header class="logo">
       Aimilab <span class="heart">♥</span> Games
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="left">
-      <h1>Solitaire Classic</h1>
-      <p class="description">
-        Classic Solitaire is a puzzle game that will exercise your brain. And it is an offline game, you can play it anytime and anywhere. Download it now and play the best classic solitaire game for free!
-      </p>
-      <div class="buttons">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=your_app_id" target="_blank">Google Play</a>
-        <a class="btn" href="https://apps.apple.com/app/idyour_app_id" target="_blank">App Store</a>
-      </div>
-    </section>
+    <main>
+      <section class="left">
+        <h1>Solitaire Classic</h1>
+        <p class="description">
+          Classic Solitaire is a puzzle game that will exercise your brain. And it is an offline game, you can play it anytime and anywhere. Download it now and play the best classic solitaire game for free!
+        </p>
+        <div class="buttons">
+          <a class="btn" href="https://play.google.com/store/apps/details?id=your_app_id" target="_blank">Google Play</a>
+          <a class="btn" href="https://apps.apple.com/app/idyour_app_id" target="_blank">App Store</a>
+        </div>
+      </section>
 
-    <section class="right">
-      <div class="carousel">
-        <img src="image1.png" alt="Screenshot 1" />
-        <img src="image2.png" alt="Screenshot 2" />
-        <img src="image3.png" alt="Screenshot 3" />
-      </div>
-    </section>
-  </main>
+      <section class="right">
+        <div class="carousel">
+          <img src="image1.png" alt="Screenshot 1" />
+          <img src="image2.png" alt="Screenshot 2" />
+          <img src="image3.png" alt="Screenshot 3" />
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    2025 ©Aimilab. Contact: q17777800757@gmail.com
-  </footer>
+    <footer>
+      2025 ©Aimilab. Contact: q17777800757@gmail.com
+    </footer>
+  </div>
 </body>
 </html>
