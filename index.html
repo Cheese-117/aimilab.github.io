@@ -33,11 +33,11 @@
     }
 
     header {
-      padding: 40px 60px 20px;
+      padding: 40px 20px 20px;
     }
 
     .logo {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -52,10 +52,18 @@
     main {
       flex: 1;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 60px;
+      flex-direction: column;
       gap: 40px;
+      padding: 0 20px 40px;
+    }
+
+    @media (min-width: 768px) {
+      main {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 60px;
+      }
     }
 
     .left {
@@ -63,15 +71,15 @@
     }
 
     h1 {
-      font-size: 3.5rem;
-      line-height: 1.1;
+      font-size: 2.5rem;
+      line-height: 1.2;
       margin-bottom: 20px;
     }
 
     p.description {
-      font-size: 1.05rem;
+      font-size: 1rem;
       line-height: 1.6;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .buttons {
@@ -98,15 +106,25 @@
       opacity: 0.9;
     }
 
-    .right img {
-      max-width: 560px;
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel img {
+      flex-shrink: 0;
       width: 100%;
+      max-width: 300px;
       border-radius: 12px;
+      scroll-snap-align: start;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
     }
 
     footer {
-      padding: 25px 60px;
+      padding: 25px 20px;
       font-size: 0.85rem;
       background: rgba(0, 0, 0, 0.4);
     }
@@ -124,16 +142,19 @@
       <h1>Solitaire Classic</h1>
       <p class="description">
         Classic Solitaire is a puzzle game that will exercise your brain. And it is an offline game, you can play it anytime and anywhere. Download it now and play the best classic solitaire game for free!
-      </p >
+      </p>
       <div class="buttons">
-        Google Play
-        App Store
+        <a class="btn" href="https://play.google.com/store/apps/details?id=your_app_id" target="_blank">Google Play</a>
+        <a class="btn" href="https://apps.apple.com/app/idyour_app_id" target="_blank">App Store</a>
       </div>
     </section>
 
     <section class="right">
-      <!-- Replace src with the generated image file name if different -->
-      < img src="aimilab_solitaire.png" alt="Solitaire Classic game screenshot" />
+      <div class="carousel">
+        <img src="image1.png" alt="Screenshot 1" />
+        <img src="image2.png" alt="Screenshot 2" />
+        <img src="image3.png" alt="Screenshot 3" />
+      </div>
     </section>
   </main>
 
