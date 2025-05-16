@@ -28,27 +28,15 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: absolute;
-      top: -50px;
-      left: -50px;
-      width: 200%;
-      height: 200%;
-      background: url('https://www.transparenttextures.com/patterns/stardust.png');
-      opacity: 0.05;
-      z-index: 0;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
     }
 
     header {
-      padding: 40px 20px 20px;
-      position: relative;
-      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      padding-bottom: 20px;
     }
 
     .logo {
@@ -65,13 +53,16 @@
     }
 
     main {
-      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 1200px;
       display: flex;
       flex-direction: column;
       gap: 40px;
-      padding: 0 20px 40px;
-      position: relative;
-      z-index: 1;
     }
 
     @media (min-width: 768px) {
@@ -79,17 +70,11 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        padding: 0 60px;
       }
     }
 
     .left {
-      max-width: 480px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(6px);
+      max-width: 500px;
     }
 
     h1 {
@@ -102,6 +87,7 @@
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 30px;
+      color: #e0e0e0;
     }
 
     .buttons {
@@ -111,34 +97,22 @@
     }
 
     .btn {
-      background: linear-gradient(135deg, var(--green), #66ffa6);
+      background: var(--green);
       border: none;
-      color: var(--black);
+      color: var(--white);
       padding: 14px 30px;
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: 600;
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 200, 83, 0.4);
-      transition: all 0.3s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .btn:hover {
+      opacity: 0.9;
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 200, 83, 0.6);
-    }
-
-    .right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(4px);
     }
 
     .carousel {
@@ -147,29 +121,27 @@
       gap: 20px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+      padding: 10px 0;
     }
 
     .carousel img {
       flex-shrink: 0;
       width: 100%;
-      max-width: 280px;
-      border-radius: 16px;
+      max-width: 300px;
+      border-radius: 12px;
       scroll-snap-align: start;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease;
-    }
-
-    .carousel img:hover {
-      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
     }
 
     footer {
-      padding: 25px 20px;
+      margin-top: 40px;
       font-size: 0.85rem;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
       text-align: center;
-      backdrop-filter: blur(3px);
-      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 12px;
     }
   </style>
 </head>
