@@ -23,8 +23,9 @@
     }
 
     html, body {
-      height: 100%;
-      overflow: hidden;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     body {
@@ -33,12 +34,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
     .container {
       width: 100%;
       max-width: 1200px;
-      height: 90vh;
+      min-height: 100vh;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(6px);
       border-radius: 20px;
@@ -67,7 +69,6 @@
       flex-direction: column;
       gap: 30px;
       flex: 1;
-      overflow: hidden;
     }
 
     @media (min-width: 768px) {
@@ -146,6 +147,8 @@
       flex-shrink: 0;
       width: 100%;
       max-width: 260px;
+      max-height: 300px;
+      height: auto;
       border-radius: 12px;
       scroll-snap-align: start;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
@@ -246,14 +249,12 @@
     let userInteracted = false;
     let interactionTimeout;
 
-    // 鼠标滚轮横向滚动
     carousel.addEventListener('wheel', function (e) {
       e.preventDefault();
       carousel.scrollLeft += e.deltaY;
       pauseAutoScroll();
     });
 
-    // 手动交互时暂停自动滚动
     ['touchstart', 'mousedown', 'scroll'].forEach(evt => {
       carousel.addEventListener(evt, pauseAutoScroll, { passive: true });
     });
