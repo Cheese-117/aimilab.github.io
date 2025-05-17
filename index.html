@@ -24,7 +24,7 @@
 
     html, body {
       height: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     body {
@@ -193,6 +193,40 @@
       padding-top: 10px;
       opacity: 0.85;
     }
+  
+    /* Responsive image and layout tweaks */
+    @media (max-width: 768px) {
+      .carousel img {
+        max-width: 80%;
+        height: auto;
+      }
+
+      .container {
+        height: auto;
+        overflow: auto;
+        padding: 20px 15px;
+      }
+
+      main {
+        flex-direction: column;
+        gap: 20px;
+        overflow: visible;
+      }
+
+      .left, .right {
+        max-width: 100%;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .carousel-wrapper {
+        overflow-x: auto;
+      }
+    }
+
   </style>
 </head>
 <body>
