@@ -24,7 +24,7 @@
 
     html, body {
       height: 100%;
-      overflow: hidden; /* 禁止滚动 */
+      overflow: hidden;
     }
 
     body {
@@ -119,6 +119,14 @@
       transform: translateY(-2px);
     }
 
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .carousel {
       display: flex;
       gap: 15px;
@@ -126,6 +134,12 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       padding: 10px 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
     }
 
     .carousel img {
@@ -135,6 +149,42 @@
       border-radius: 12px;
       scroll-snap-align: start;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s ease;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .carousel-wrapper:hover .carousel-btn {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .carousel-btn.left {
+      left: -10px;
+    }
+
+    .carousel-btn.right {
+      right: -10px;
     }
 
     footer {
@@ -164,10 +214,19 @@
       </section>
 
       <section class="right">
-        <div class="carousel">
-          <img src="image1.png" alt="Screenshot 1" />
-          <img src="image2.png" alt="Screenshot 2" />
-          <img src="image3.png" alt="Screenshot 3" />
+        <div class="carousel-wrapper">
+          <button class="carousel-btn left" id="prevBtn">&#10094;</button>
+          <div class="carousel" id="carousel">
+            <img src="image1.png" alt="Screenshot 1" />
+            <img src="image2.png" alt="Screenshot 2" />
+            <img src="image3.png" alt="Screenshot 3" />
+            <img src="image4.png" alt="Screenshot 4" />
+            <img src="image5.png" alt="Screenshot 5" />
+            <img src="image6.png" alt="Screenshot 6" />
+            <img src="image7.png" alt="Screenshot 7" />
+            <img src="image8.png" alt="Screenshot 8" />
+          </div>
+          <button class="carousel-btn right" id="nextBtn">&#10095;</button>
         </div>
       </section>
     </main>
@@ -176,5 +235,63 @@
       2025 ©Aimilab. Contact: q17777800757@gmail.com
     </footer>
   </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    const scrollAmount = carousel.querySelector('img').offsetWidth + 15;
+    let autoScrollInterval;
+    let userInteracted = false;
+    let interactionTimeout;
+
+    // 鼠标滚轮横向滚动
+    carousel.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      carousel.scrollLeft += e.deltaY;
+      pauseAutoScroll();
+    });
+
+    // 手动交互时暂停自动滚动
+    ['touchstart', 'mousedown', 'scroll'].forEach(evt => {
+      carousel.addEventListener(evt, pauseAutoScroll, { passive: true });
+    });
+
+    function pauseAutoScroll() {
+      userInteracted = true;
+      clearTimeout(interactionTimeout);
+      clearInterval(autoScrollInterval);
+      interactionTimeout = setTimeout(() => {
+        userInteracted = false;
+        startAutoScroll();
+      }, 5000);
+    }
+
+    function startAutoScroll() {
+      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+      autoScrollInterval = setInterval(() => {
+        if (userInteracted) return;
+        if (carousel.scrollLeft + scrollAmount >= maxScrollLeft - 5) {
+          carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }, 3000);
+    }
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      pauseAutoScroll();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      pauseAutoScroll();
+    });
+
+    startAutoScroll();
+  </script>
 </body>
 </html>
