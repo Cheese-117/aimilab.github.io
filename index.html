@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
   <title>Aimilab Games</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
@@ -24,7 +24,7 @@
 
     html, body {
       height: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     body {
@@ -33,12 +33,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px 10px;
     }
 
     .container {
       width: 100%;
       max-width: 1200px;
-      height: 90vh;
+      min-height: 90vh;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(6px);
       border-radius: 20px;
@@ -119,6 +120,10 @@
       transform: translateY(-2px);
     }
 
+    .right {
+      padding: 0 10px;
+    }
+
     .carousel-wrapper {
       position: relative;
       width: 100%;
@@ -146,6 +151,8 @@
       flex-shrink: 0;
       width: 100%;
       max-width: 260px;
+      max-width: 90vw;
+      height: auto;
       border-radius: 12px;
       scroll-snap-align: start;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
@@ -192,6 +199,34 @@
       text-align: center;
       padding-top: 10px;
       opacity: 0.85;
+    }
+
+    @media (min-width: 768px) {
+      .buttons {
+        flex-direction: row;
+      }
+      .btn {
+        flex: 1;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      p.description {
+        font-size: 0.9rem;
+      }
+
+      header {
+        font-size: 1.6rem;
+      }
+
+      .container {
+        padding: 20px 16px;
+      }
     }
   </style>
 </head>
@@ -246,14 +281,12 @@
     let userInteracted = false;
     let interactionTimeout;
 
-    // 鼠标滚轮横向滚动
     carousel.addEventListener('wheel', function (e) {
       e.preventDefault();
       carousel.scrollLeft += e.deltaY;
       pauseAutoScroll();
     });
 
-    // 手动交互时暂停自动滚动
     ['touchstart', 'mousedown', 'scroll'].forEach(evt => {
       carousel.addEventListener(evt, pauseAutoScroll, { passive: true });
     });
@@ -270,7 +303,6 @@
 
     function startAutoScroll() {
       const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-
       autoScrollInterval = setInterval(() => {
         if (userInteracted) return;
         if (carousel.scrollLeft + scrollAmount >= maxScrollLeft - 5) {
