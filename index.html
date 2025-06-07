@@ -4,12 +4,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aimilab Games – Optimized</title>
+  <title>Aimilab Games</title>
   <style>
-    /* Google Font */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-    /* Color palette */
     :root {
       --green: #00c853;
       --dark-green: #004d00;
@@ -17,7 +15,6 @@
       --white: #ffffff;
     }
 
-    /* Reset + base */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -38,7 +35,6 @@
       justify-content: center;
     }
 
-    /* Card container */
     .container {
       width: 100%;
       max-width: 1200px;
@@ -53,7 +49,6 @@
       padding: 30px;
     }
 
-    /* Header */
     header {
       display: flex;
       align-items: center;
@@ -61,20 +56,20 @@
       font-weight: 700;
       gap: 10px;
     }
+
     .logo span.heart {
       font-size: 2rem;
       color: var(--green);
     }
 
-    /* Main */
     main {
       display: flex;
       flex-direction: column;
       gap: 30px;
       flex: 1;
-      /* Allow content inside to flow if taller than container */
-      overflow: visible; /* was hidden – caused screenshots to be cropped on some screens */
+      overflow: hidden;
     }
+
     @media (min-width: 768px) {
       main {
         flex-direction: row;
@@ -83,25 +78,28 @@
       }
     }
 
-    /* Left column */
     .left {
       max-width: 500px;
     }
+
     h1 {
       font-size: 2.2rem;
       margin-bottom: 15px;
     }
+
     p.description {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
       color: #e0e0e0;
     }
+
     .buttons {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
+
     .btn {
       background: var(--green);
       border: none;
@@ -115,18 +113,10 @@
       text-align: center;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
+
     .btn:hover {
       opacity: 0.9;
       transform: translateY(-2px);
-    }
-
-    /* ----- Carousel (right column) ----- */
-    .right {
-      /* New flex wrapper so images are always centered vertically/horizontally */
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .carousel-wrapper {
@@ -147,29 +137,25 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
+
     .carousel::-webkit-scrollbar {
       display: none;
     }
 
-    /* Screenshot images – responsive tweaks */
     .carousel img {
       flex-shrink: 0;
-      /* Dynamically scales width between 180‑260 px depending on viewport */
-      width: clamp(180px, 35vw, 260px);
-      /* Prevent vertical overflow: never exceed 70% of viewport height */
-      max-height: 70vh;
-      height: auto;
-      object-fit: contain; /* ensure the full screenshot is always visible */
+      width: 100%;
+      max-width: 260px;
       border-radius: 12px;
       scroll-snap-align: start;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
       transition: transform 0.3s ease;
     }
+
     .carousel img:hover {
       transform: scale(1.05);
     }
 
-    /* Carousel navigation arrows */
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -187,14 +173,20 @@
       z-index: 10;
       pointer-events: none;
     }
+
     .carousel-wrapper:hover .carousel-btn {
       opacity: 1;
       pointer-events: auto;
     }
-    .carousel-btn.left { left: -10px; }
-    .carousel-btn.right { right: -10px; }
 
-    /* Footer */
+    .carousel-btn.left {
+      left: -10px;
+    }
+
+    .carousel-btn.right {
+      right: -10px;
+    }
+
     footer {
       font-size: 0.85rem;
       text-align: center;
@@ -210,11 +202,10 @@
     </header>
 
     <main>
-      <!-- Left content -->
       <section class="left">
         <h1>Solitaire Classic</h1>
         <p class="description">
-          Rediscover the timeless card game loved for generations—now beautifully refined for mobile. Solitaire Classic delivers a clean, distraction‑free design, smooth drag‑and‑drop controls, and unlimited hints & undos to keep every game relaxing yet engaging. Play completely offline, whenever and wherever you like, and give your mind a pleasant workout while you unwind. Download today and enjoy the best free Solitaire experience on any mobile device!
+          Rediscover the timeless card game loved for generations—now beautifully refined for mobile. Solitaire Classic delivers a clean, distraction-free design, smooth drag-and-drop controls, and unlimited hints & undos to keep every game relaxing yet engaging. Play completely offline, whenever and wherever you like, and give your mind a pleasant workout while you unwind. Download today and enjoy the best free Solitaire experience on any mobile device!
         </p>
         <div class="buttons">
           <a class="btn" href="https://play.google.com/store/apps/details?id=your_app_id" target="_blank">Google Play</a>
@@ -222,7 +213,6 @@
         </div>
       </section>
 
-      <!-- Right content (carousel) -->
       <section class="right">
         <div class="carousel-wrapper">
           <button class="carousel-btn left" id="prevBtn">&#10094;</button>
@@ -246,7 +236,6 @@
     </footer>
   </div>
 
-  <!-- Carousel script (unchanged) -->
   <script>
     const carousel = document.getElementById('carousel');
     const prevBtn = document.getElementById('prevBtn');
@@ -257,14 +246,14 @@
     let userInteracted = false;
     let interactionTimeout;
 
-    // Horizontal scroll with mouse wheel
+    // 鼠标滚轮横向滚动
     carousel.addEventListener('wheel', function (e) {
       e.preventDefault();
       carousel.scrollLeft += e.deltaY;
       pauseAutoScroll();
     });
 
-    // Pause auto‑scroll during manual interaction
+    // 手动交互时暂停自动滚动
     ['touchstart', 'mousedown', 'scroll'].forEach(evt => {
       carousel.addEventListener(evt, pauseAutoScroll, { passive: true });
     });
