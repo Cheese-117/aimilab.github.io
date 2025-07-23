@@ -1,10 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aimilab Games</title>
+  <meta name="description" content="Aimilab Games - Enjoy Solitaire and Bubble Shooter Pop, two addictive puzzle games for all ages!">
+  <meta name="keywords" content="solitaire, bubble shooter, aimilab, puzzle games, mobile games">
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
   <style>
     body {
       margin: 0;
@@ -61,14 +63,15 @@
       line-height: 1.6;
     }
 
-    .store-buttons img {
+    .store-buttons a img {
       height: 42px;
       margin-right: 10px;
       transition: transform 0.2s;
     }
 
-    .store-buttons img:hover {
+    .store-buttons a img:hover {
       transform: scale(1.05);
+      filter: brightness(1.1);
     }
 
     footer {
@@ -76,6 +79,15 @@
       font-size: 13px;
       color: #999;
       padding-top: 30px;
+    }
+
+    footer a {
+      color: #4AB6FF;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
@@ -89,7 +101,7 @@
         height: 48px;
       }
 
-      .store-buttons img {
+      .store-buttons a img {
         height: 36px;
       }
     }
@@ -107,8 +119,12 @@
         <p>
 Classic card game play has been upgraded to test your patience and strategy! Suitable for all ages, it's relaxing and challenging at the same time.</p>
         <div class="store-buttons">
-          <img src="./images/googleplay.png" alt="https://play.google.com/store/apps/details?id=com.aimilab.solitaire">
-          <img src="./images/appstore.png" alt="App Store">
+          <a href="https://play.google.com/store/apps/details?id=com.aimilab.solitaire" target="_blank">
+            <img src="./images/googleplay.png" alt="Google Play">
+          </a>
+          <a href="https://apps.apple.com/app/id0000000000" target="_blank">
+            <img src="./images/appstore.png" alt="App Store">
+          </a>
         </div>
       </div>
     </div>
@@ -119,15 +135,21 @@ Classic card game play has been upgraded to test your patience and strategy! Sui
         <h2>Bubble Shooter Pop</h2>
         <p>A bubble popping game that's impossible to put down! Colorful and fast-paced, enjoy the satisfying feeling of popping bubbles with your fingers!</p>
         <div class="store-buttons">
-          <img src="./images/googleplay.png" alt="Google Play">
-          <img src="./images/appstore.png" alt="App Store">
+          <a href="https://play.google.com/store/apps/details?id=com.aimilab.bubble" target="_blank">
+            <img src="./images/googleplay.png" alt="Google Play">
+          </a>
+          <a href="https://apps.apple.com/app/id0000000001" target="_blank">
+            <img src="./images/appstore.png" alt="App Store">
+          </a>
         </div>
       </div>
     </div>
 
     <footer>
-2025 ©Aimilab.  Contact: support@inosuke.space    <a href="/docs/aimilab_privacy_policy.html">Privacy Policy</a>
-</footer>
+      2025 ©Aimilab. Contact: support@inosuke.space
+      <br>
+      <a href="/docs/aimilab_privacy_policy.html">Privacy Policy</a>
+    </footer>
   </div>
 
 </body>
